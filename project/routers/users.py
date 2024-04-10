@@ -56,8 +56,6 @@ async def get_user_reviews(user_id: int = Cookie(None)):
     return [ user_review for user_review in user.reviews]
 """
 
-@router.get("/reviews")
+@router.get("/reviews", response_model=List[ReviewResponseModel])
 async def get_user_reviews(user: User = Depends(get_current_user)):
-    return {
-        'user': user.username,
-    }
+    return [ user_review for user_review in user.reviews]
