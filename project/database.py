@@ -20,6 +20,14 @@ class User(Model):
         database = database
         table_name = 'users'
 
+    @classmethod
+    def authenticate(cls, username, password):
+        user = cls.select().where(cls.username == username).first()
+
+        if user and user.password == cls.create_password_hash(password):
+            return user
+
+
 
     @classmethod
     def create_password_hash(self, password):

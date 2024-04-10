@@ -3,3 +3,5 @@
 
 
   pip install requests  
+  pip install python-multipart
+  pip install pyjwt
